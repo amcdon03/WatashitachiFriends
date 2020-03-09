@@ -3,35 +3,35 @@ import React from 'react'
 function Conversation() {
   return (
     <section className='Comments'>
-      <div className='bubble sender first'>Hello there!</div>
-      <div className='bubble sender last'>How are you today?</div>
+      <div className='bubble sender'>Hey there!</div>
+      <div className='bubble sender'>How's it going?</div>
 
-      <div className='bubble recipient first'>Oh, I'm fine.</div>
-      <div className='bubble recipient last'>And you?</div>
+      <div className='bubble recipient'>Oh, I'm fine.</div>
+      <div className='bubble recipient'>You?</div>
 
-      <div className='bubble sender first'>Yeah, I'm great!</div>
-      <div className='bubble sender middle'>
-        I'm not. Today, I have Maths!{' '}
+      <div className='bubble sender'>Yeah, mate. I'm great!</div>
+      <div className='bubble sender'>
+        Me, too. Today, I have Maths!{' '}
         <span role='img' aria-label='smiley-face'>
           😃
         </span>
       </div>
-      <div className='bubble sender last'>It's really hard!</div>
+      <div className='bubble sender'>It's really hard, but I love it!</div>
 
       <div className='bubble recipient'>
-        No, it's not really. It just takes a bit of logic. You can do it!
+        Mn!, but it's not that hard really. It just takes a bit of logic. You
+        can do it!
       </div>
 
-      <div className='bubble sender first'>
-        Yeah, but I give it a go though. I don't waste time in class like some
-        people.
+      <div className='bubble sender'>
+        Yeah, I can coz I give it a good go. I don't waste time in class like
+        some people.
       </div>
-      <div className='bubble sender middle'>
-        Some students don't care about their education ...
+      <div className='bubble sender'>
+        People who don't care about their education .....
       </div>
-      <div className='bubble sender last'>
-        I think it's really important that I do well so I can get a good job. Do
-        you?
+      <div className='bubble sender'>
+        I'm trying to get good at it so I can get a good job in cyber.
       </div>
     </section>
   )

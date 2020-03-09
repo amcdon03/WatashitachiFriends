@@ -36,7 +36,7 @@
   border-radius: 1em;
   padding: 0.25em 0.75em;
   margin: 0.0625em;
-  max-width: 50%;
+  max-width: 75%;
 }
 
 .Comments > .bubble.sender {
@@ -49,29 +49,6 @@
   background-color: #efefef;
   color: #1c2833;
 }
-
-.Comments > .bubble.sender.first {
-  border-bottom-left-radius: 0.1em;
-}
-.Comments > .bubble.sender.last {
-  border-top-left-radius: 0.1em;
-}
-.Comments > .bubble.sender.middle {
-  border-bottom-left-radius: 0.1em;
-  border-top-left-radius: 0.1em;
-}
-
-.Comments > .bubble.recipient.first {
-  border-bottom-right-radius: 0.1em;
-}
-.Comments > .bubble.recipient.last {
-  border-top-right-radius: 0.1em;
-}
-.Comments > .bubble.recipient.middle {
-  border-bottom-right-radius: 0.1em;
-  border-top-right-radius: 0.1em;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
