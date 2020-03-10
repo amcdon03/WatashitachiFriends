@@ -1,40 +1,35 @@
 import React from 'react'
 
-function Conversation() {
-  return (
-    <section className='Comments'>
-      <div className='bubble sender'>Hey there!</div>
-      <div className='bubble sender'>How's it going?</div>
+const dummyData = [
+  { name: 'angel', message: 'Hey there!' },
+  { name: 'andrew', message: "Hi! How's it going!" },
+  { name: 'angel', message: 'Oh, things are going fine!' },
+  { name: 'andrew', message: 'What about for you?' },
+  { name: 'angel', message: "It's all good!" },
+  {
+    name: 'angel',
+    message: 'Although, I do have Maths today! <span> 😬 </span>'
+  },
+  {
+    name: 'andrew',
+    message:
+      '<span> 😬 </span>'
+]
 
-      <div className='bubble recipient'>Oh, I'm fine.</div>
-      <div className='bubble recipient'>You?</div>
+if (dummData == 'angel' ? dummData == 'sender' : dummData == 'recipient');
 
-      <div className='bubble sender'>Yeah, mate. I'm great!</div>
-      <div className='bubble sender'>
-        Me, too. Today, I have Maths!{' '}
-        <span role='img' aria-label='smiley-face'>
-          😃
-        </span>
-      </div>
-      <div className='bubble sender'>It's really hard, but I love it!</div>
+class Conversation extends React.Component {
+  render() {
+    //can only return 1 element inside of return
+    //but can do many if only 1 outside element, eg section
+    return (
+      <section className='chat-window'>
+        <div className='bubble sender'>{props.dummyData}</div>
 
-      <div className='bubble recipient'>
-        Mn!, but it's not that hard really. It just takes a bit of logic. You
-        can do it!
-      </div>
-
-      <div className='bubble sender'>
-        Yeah, I can coz I give it a good go. I don't waste time in class like
-        some people.
-      </div>
-      <div className='bubble sender'>
-        People who don't care about their education .....
-      </div>
-      <div className='bubble sender'>
-        I'm trying to get good at it so I can get a good job in cyber.
-      </div>
-    </section>
-  )
+        <div className='bubble recipient'>{props.dummyData}</div>
+      </section>
+    )
+  }
 }
 
 export default Conversation
