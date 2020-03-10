@@ -12,11 +12,16 @@ const dummyData = [
   },
   {
     name: 'andrew',
-    message:
-      '<span> 😬 </span>'
+    message: '<span> 😬 </span>'
+  }
 ]
-
+/*
 if (dummData == 'angel' ? dummData == 'sender' : dummData == 'recipient');
+
+<div className='bubble sender'>{props.dummyData}</div>
+
+<div className='bubble recipient'>{props.dummyData}</div>
+*/
 
 class Conversation extends React.Component {
   render() {
@@ -24,11 +29,20 @@ class Conversation extends React.Component {
     //but can do many if only 1 outside element, eg section
     return (
       <section className='chat-window'>
-        <div className='bubble sender'>{props.dummyData}</div>
-
-        <div className='bubble recipient'>{props.dummyData}</div>
+        <form onSubmit={e => this.sendMessage(e)}>
+          <input onChange={e => this.updateInput(e)} type='text'></input>
+          <button type='submit'>Send</button>
+        </form>
       </section>
     )
+  }
+  updateInput = e => {
+    console.log(e)
+  }
+
+  sendMessage = e => {
+    e.preventDefault()
+    console.log('message sent')
   }
 }
 
