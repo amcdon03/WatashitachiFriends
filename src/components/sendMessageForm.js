@@ -2,7 +2,6 @@ import React from 'react'
 
 class SendMessageForm extends React.Component {
   render() {
-    //can only return 1 element inside of return
     return (
       <section className='send-form'>
         <form onSubmit={e => this.sendMessage(e)}>
