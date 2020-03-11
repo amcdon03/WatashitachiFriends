@@ -35,19 +35,15 @@ class Conversation extends React.Component {
         <div className='bubble recipient'>'What about for you?'</div>
         <div className='bubble sender'>'It's all good!'</div>
         <div className='bubble sender'>
-          'Although, I do have Maths today!{' '}
+          'Although, I do have Maths today!
           <span role='img' aria-label='emoji grimace'>
-            {' '}
-            😬{' '}
+            😬
           </span>
         </div>
         <div className='bubble recipient'>
-          '
           <span role='img' aria-label='emoji grimace'>
-            {' '}
-            😬{' '}
+            😬
           </span>
-          '
         </div>
       </section>
     )
