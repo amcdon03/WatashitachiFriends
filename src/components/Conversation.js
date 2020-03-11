@@ -28,21 +28,29 @@ class Conversation extends React.Component {
     //can only return 1 element inside of return
     //but can do many if only 1 outside element, eg section
     return (
-      <section className='chat-window'>
-        <form onSubmit={e => this.sendMessage(e)}>
-          <input onChange={e => this.updateInput(e)} type='text'></input>
-          <button type='submit'>Send</button>
-        </form>
+      <section className='message-window'>
+        <div className='bubble sender'>'Hey there!'</div>
+        <div className='bubble recipient'>'Hi! How's it going!'</div>
+        <div className='bubble sender'>'Oh, things are going fine!'</div>
+        <div className='bubble recipient'>'What about for you?'</div>
+        <div className='bubble sender'>'It's all good!'</div>
+        <div className='bubble sender'>
+          'Although, I do have Maths today!{' '}
+          <span role='img' aria-label='emoji grimace'>
+            {' '}
+            😬{' '}
+          </span>
+        </div>
+        <div className='bubble recipient'>
+          '
+          <span role='img' aria-label='emoji grimace'>
+            {' '}
+            😬{' '}
+          </span>
+          '
+        </div>
       </section>
     )
-  }
-  updateInput = e => {
-    console.log(e)
-  }
-
-  sendMessage = e => {
-    e.preventDefault()
-    console.log('message sent')
   }
 }
 
