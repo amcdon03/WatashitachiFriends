@@ -36,7 +36,11 @@ class Conversation extends React.Component {
         <div className='bubble recipient'>What about for you?</div>
         <div className='bubble sender'>It's all good!</div>
         <div className='bubble sender'>
+<<<<<<< HEAD
           Although, I do have Maths today!
+=======
+          'Although, I do have Maths today!
+>>>>>>> 1d8772442e93d55b13602fe9872e6d08a9f6b3b3
           <span role='img' aria-label='emoji grimace'>
             😬
           </span>
