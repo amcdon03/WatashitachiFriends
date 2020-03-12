@@ -23,24 +23,22 @@ if (dummData == 'angel' ? dummData == 'sender' : dummData == 'recipient');
 <div className='bubble recipient'>{props.dummyData}</div>
 */
 
-class Conversation extends React.Component {
-  render() {
-    //can only return 1 element inside of return
-    //but can do many if only 1 outside element, eg section
-    const now = new Date()
-    return (
-      <section className='message-window'>
-        <div className='bubble sender'>{dummyData[0].message}</div>
-        <div className='bubble recipient'>{dummyData[1].message}</div>
-        <div className='bubble sender'>{dummyData[2].message}</div>
-        <div className='bubble recipient'>{dummyData[3].message}</div>
-        <div className='bubble sender'>{dummyData[4].message}</div>
-        <div className='bubble sender'>{dummyData[5].message}</div>
-        <div className='bubble recipient'>{dummyData[6].message}</div>
-        <p>{now.toString()}</p>
-      </section>
-    )
-  }
+const Conversation = props => {
+  //can only return 1 element inside of return
+  //but can do many if only 1 outside element, eg section
+  const now = new Date()
+  return (
+    <section className='message-window'>
+      <div className='bubble sender'>{dummyData[0].message}</div>
+      <div className='bubble recipient'>{dummyData[1].message}</div>
+      <div className='bubble sender'>{dummyData[2].message}</div>
+      <div className='bubble recipient'>{dummyData[3].message}</div>
+      <div className='bubble sender'>{dummyData[4].message}</div>
+      <div className='bubble sender'>{dummyData[5].message}</div>
+      <div className='bubble recipient'>{dummyData[6].message}</div>
+      <p>{now.toString()}</p>
+    </section>
+  )
 }
 
 export default Conversation
