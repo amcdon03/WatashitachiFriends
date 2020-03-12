@@ -30,22 +30,13 @@ class Conversation extends React.Component {
     const now = new Date()
     return (
       <section className='message-window'>
-        <div className='bubble sender'>Hey there!</div>
-        <div className='bubble recipient'>Hi! How's it going!</div>
-        <div className='bubble sender'>Oh, things are going fine!</div>
-        <div className='bubble recipient'>What about for you?</div>
-        <div className='bubble sender'>It's all good!</div>
-        <div className='bubble sender'>
-          Although, I do have Maths today!{' '}
-          <span role='img' aria-label='emoji grimace'>
-            😬
-          </span>
-        </div>
-        <div className='bubble recipient'>
-          <span role='img' aria-label='emoji grimace'>
-            😬
-          </span>
-        </div>
+        <div className='bubble sender'>{dummyData.message[0]}</div>
+        <div className='bubble recipient'>{dummyData.message[1]}</div>
+        <div className='bubble sender'>{dummyData.message[2]}</div>
+        <div className='bubble recipient'>{dummyData.message[3]}</div>
+        <div className='bubble sender'>{dummyData.message[4]}</div>
+        <div className='bubble sender'>{dummyData.message[5]}</div>
+        <div className='bubble recipient'>{dummyData.message[6]}</div>
         <p>{now.toString()}</p>
       </section>
     )
