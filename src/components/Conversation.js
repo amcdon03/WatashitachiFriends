@@ -8,11 +8,11 @@ const dummyData = [
   { name: 'angel', message: "It's all good!" },
   {
     name: 'angel',
-    message: 'Although, I do have Maths today! <span> 😬 </span>'
+    message: 'Although, I do have Maths today! 😬'
   },
   {
     name: 'andrew',
-    message: '<span> 😬 </span>'
+    message: '😬'
   }
 ]
 /*
