@@ -1,23 +1,23 @@
-import React from 'react'
+import React from "react"
 
 class SendMessageForm extends React.Component {
   render() {
     return (
-      <section className='send-form'>
-        <form onSubmit={e => this.sendMessage(e)}>
-          <input onChange={e => this.updateInput(e)} type='text'></input>
-          <button type='submit'>Send</button>
+      <section className="send-form">
+        <form onSubmit={(e) => this.sendMessage(e)}>
+          <input onChange={(e) => this.updateInput(e)} type="text"></input>
+          <button type="submit">Send</button>
         </form>
       </section>
     )
   }
-  updateInput = e => {
+  updateInput = (e) => {
     console.log(e)
   }
 
-  sendMessage = e => {
+  sendMessage = (e) => {
     e.preventDefault()
-    console.log('message sent')
+    console.log("message sent")
   }
 }
 
