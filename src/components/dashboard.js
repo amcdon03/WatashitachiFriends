@@ -1,14 +1,14 @@
 import React from 'react'
-import Conversation from "./conversation.js"
+import MessageArea from "./messageArea.js"
 import Title from "./title"
 import SendMessageForm from "./sendMessageForm"
 
 class Dashboard extends React.Component {
   render() {
-    //can only return 1 element inside of return
-    return <section className='dashboard'>
+    //can only return 1 main element inside of return
+    return <section className='conversation'>
       <Title/>
-      <Conversation />
+      <MessageArea />
       <SendMessageForm/>
     </section>
   }

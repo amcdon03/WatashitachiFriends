@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.dashboard {
+.conversation {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -14,26 +14,26 @@
   color: white;
 }
 
-.dashboard {
+.conversation {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-flow: column wrap;
 }
 
-.message-window > .bubble {
+.conversation > .bubble {
   border-radius: 1em;
   padding: 0.25em 0.75em;
   margin: 0.0625em;
   max-width: 75%;
 }
 
-.message-window > .bubble.sender {
+.conversation > .bubble.sender {
   align-self: flex-start;
   background-color: cornflowerblue;
   color: #fff;
 }
-.message-window > .bubble.recipient {
+.conversation > .bubble.recipient {
   align-self: flex-end;
   background-color: #efefef;
   color: #1c2833;
