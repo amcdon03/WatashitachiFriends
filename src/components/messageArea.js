@@ -27,7 +27,7 @@ const MessageArea = (props) => {
   //can only return 1 element inside of return
   //but can do many if only 1 outside element, eg section
   return (
-    <section className="conversation">
+    <section className="messageList">
       <div className="bubble sender">{dummyData[0].message}</div>
       <div className="bubble recipient">{dummyData[1].message}</div>
       <div className="bubble sender">{dummyData[2].message}</div>

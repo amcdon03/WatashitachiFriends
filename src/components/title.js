@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react"
 
 class Title extends React.Component {
   render() {
     return (
-      <section className='chat-window'>
-        <h2>Let's have a chat!</h2>
+      <section className="headerArea">
+        <h2>Let's Chat!</h2>
       </section>
     )
   }

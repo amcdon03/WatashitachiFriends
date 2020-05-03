@@ -3,7 +3,7 @@ import React from "react"
 class SendMessageForm extends React.Component {
   render() {
     return (
-      <section className="send-form">
+      <section className="sendForm">
         <form onSubmit={(e) => this.sendMessage(e)}>
           <input onChange={(e) => this.updateInput(e)} type="text"></input>
           <button type="submit">Send</button>
