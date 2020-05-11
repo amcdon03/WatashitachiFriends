@@ -6,11 +6,13 @@ import SendMessageForm from "./sendMessageForm"
 class Dashboard extends React.Component {
   render() {
     //can only return 1 main element inside of return
-    return <section className='conversation'>
+    return (
+    <section className='conversation'>
       <Title/>
       <MessageArea />
       <SendMessageForm/>
     </section>
+    )
   }
 }
 

@@ -38,3 +38,34 @@
   background-color: #efefef;
   color: #1c2833;
 }
+
+.sendForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.sendForm input[type="text"] {
+  border-radius: 1em;
+  width: 300px;
+  height: 30px;
+  padding: 0 10px;
+  margin: 10px 10px;
+}
+
+.sendForm button[type="submit"] {
+  border-radius: 1em;
+  height: 30px;
+  background-color: white;
+  color: black;
+}
+
+.sendForm button[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #e7e7e7;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  text-align: center;
+}
