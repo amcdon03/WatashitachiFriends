@@ -22,7 +22,7 @@ const dummyData = [
   },
 ]
 /*
-if (dummData == 'angel' ? dummData == 'sender' : dummData == 'recipient');
+if (dummyData == 'angel' ? dummyData == 'sender' : dummyData == 'recipient');
 
 <div className='bubble sender'>{props.dummyData}</div>
 
@@ -38,6 +38,7 @@ let addMsgObject = () => {
   },)
   console.log(dummyData)
 }
+
 const MessageArea = (props) => {
   //can only return 1 element inside of return
   //but can do many if only 1 outside element, eg section
