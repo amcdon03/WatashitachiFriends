@@ -11,13 +11,18 @@ class SendMessageForm extends React.Component {
       </section>
     )
   }
+  //a callback
   updateInput = (e) => {
     console.log(e)
+    this.setState({messageContent: e
+    })   //extract the value of input from the event
   }
 
+  //a callback
   sendMessage = (e) => {
     e.preventDefault()
     console.log("message sent")
+    console.log(this.state.messageContent)  //use a library to send to the server - fetch api
   }
 }
 
