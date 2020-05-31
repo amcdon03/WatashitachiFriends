@@ -14,26 +14,26 @@
   color: white;
 }
 
-.messageList {
+.messageArea {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-flow: column wrap;
 }
 
-.messageList > .bubble {
+.messageArea > .bubble {
   border-radius: 1em;
   padding: 0.25em 0.75em;
   margin: 0.0625em;
   max-width: 75%;
 }
 
-.messageList > .bubble.sender {
+.messageArea > .bubble.sender {
   align-self: flex-start;
   background-color: cornflowerblue;
   color: #fff;
 }
-.messageList > .bubble.recipient {
+.messageArea > .bubble.recipient {
   align-self: flex-end;
   background-color: #efefef;
   color: #1c2833;
