@@ -5,7 +5,7 @@ class MessageList extends React.Component {
     super(props)
     //boilerplate
     this.addMsgObject = this.addMsgObject.bind(this)
-    
+
     this.state = {
       messages: [
         { user: "bubble sender", name: "angel", text: "Hey there!" },
@@ -34,25 +34,30 @@ class MessageList extends React.Component {
           user: "bubble recipient",
           name: "andrew",
           text: "Noooo 😬",
-        }
+        },
       ],
     }
   }
 
   addMsgObject = () => {
     // add function code here
-    const {messages} = this.state;
-    this.setState({messages: [ ...messages, {
-      user: "bubble sender",
-      name: "angel",
-      text: "Exactly! Oh No!",
-    }]})    
+    const { messages } = this.state
+    this.setState({
+      messages: [
+        ...messages,
+        {
+          user: "bubble sender",
+          name: "angel",
+          text: "Exactly! Oh No!",
+        },
+      ],
+    })
     //console.log(this.messages)
   }
 
   render() {
     return (
-      <section className = "messageArea">
+      <section className="messageArea">
         {this.state.messages.map(function (item) {
           return <div className={item.user}>{item.text}</div>
         })}
