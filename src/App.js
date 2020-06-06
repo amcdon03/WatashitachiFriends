@@ -1,16 +1,18 @@
 import React from "react"
-import { Route, Redirect, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom"
 import "./App.css"
-import Dashboard from "./components/dashboard"
+import Chat from "./components/chat"
 import Login from "./components/login"
 
 function App() {
   return (
-    <Switch>
-      <Redirect exact from="/" to="/login" />
-      <Route path="/login" component={Login} />
-      <Route path="/dashboard" component={Dashboard} />
-    </Switch>
+    <BrowserRouter>
+      <Switch>
+        <Redirect exact from="/" to="/login" />
+        <Route path="/login" component={Login} />
+        <Route path="/chat" component={Chat} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
