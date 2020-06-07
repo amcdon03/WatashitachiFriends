@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default () => {
+function MessageForm() {
   //a callback
   const updateInput = (e) => {
     console.log(e);
@@ -15,11 +15,12 @@ export default () => {
   };
 
   return (
-    <section className="sendForm">
+    <div className="sendForm">
       <form onSubmit={sendMessage}>
         <input onChange={updateInput} type="text"></input>
         <button type="submit">Send</button>
       </form>
-    </section>
+    </div>
   );
-};
+}
+export default MessageForm;
