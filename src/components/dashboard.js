@@ -1,4 +1,4 @@
-import React from "react"
+/* import React from "react"
 
 import { Message } from "./Message"
 
@@ -12,4 +12,4 @@ export const Dashboard = ({ studentMessages }) => {
   )
 }
 
-export default Dashboard
+export default Dashboard */
