@@ -3,7 +3,7 @@ import MessageList from './messageList.js';
 import Title from './title';
 import MessageForm from './messageForm';
 
-export default function chatPage() {
+function chatPage() {
   return (
     <section className="conversation">
       <Title />
@@ -12,3 +12,4 @@ export default function chatPage() {
     </section>
   );
 }
+export default chatPage;
