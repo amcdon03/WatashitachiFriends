@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function MessageForm() {
-  //useState rtns an array with 2 params: current & setter (that updates current state)
+  //useState rtns an array with 2 params: current & setter (a fn that updates current state)
   const [messages, setMessages] = useState([]);
 
   const [currentMessage, setCurrentMessage] = useState('');
@@ -22,8 +22,8 @@ export default function MessageForm() {
     //nothing here changes value of messages
     <div className="sendForm">
       <form onSubmit={addMessage}>
-        <input onChange={updateInput} type="text"></input>
-        <button type="submit">Send Message</button>
+        <input onChange={updateInput} type="text" value={currentMessage}></input>
+        <button type="submit">Send</button>
       </form>
     </div>
   );
