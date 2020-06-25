@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MessageList from './messageList.js';
 import Title from './title';
 import MessageForm from './messageForm.js';
@@ -33,6 +33,21 @@ export default function ChatPage() {
       text: 'Noooo 😬',
     },
   ]);
+
+  const LOCAL_STORAGE_KEY = 'react-message-list-messages';
+
+  useEffect(() => {
+    //get messages from local storage to store in var by calling getItem on localStorage
+    const storageMessages = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storageMessages) {
+      setMessages(storageMessages);
+    }
+  }, []);
+
+  useEffect(() => {
+    //call setItem fn on global local storage
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(messages));
+  }, [messages]);
 
   const sendMessage = (message) => {
     //call setMessage and pass on value enclosed
