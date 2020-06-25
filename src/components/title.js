@@ -1,11 +1,9 @@
 import React from 'react';
 
-function Title() {
+export default function Title() {
   return (
     <section className="headerArea">
-      <h2>Let's Chat!</h2>
+      <h3>Let's Chat!</h3>
     </section>
   );
 }
-
-export default Title;
