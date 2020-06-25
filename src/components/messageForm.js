@@ -5,7 +5,9 @@ export default function MessageForm({ onSend }) {
   //tracks state of the input box
   const [currentMessage, setCurrentMessage] = useState('');
 
+  //this fn takes in an event
   const updateMessage = (event) => {
+    //set the state, above, by passing in its fn elem
     //call setCurrentMessage and pass on value enclosed
     setCurrentMessage(event.target.value); //use a library to send to the server - fetch api
   };
@@ -13,7 +15,7 @@ export default function MessageForm({ onSend }) {
   return (
     //nothing here changes value of messages
     <div className="sendForm">
-      {/*capturing onSubmit event, calling onSend on line 26 and passing currentMessage*/}
+      {/*handler capturing onSubmit event, calling onSend on line 26 and passing currentMessage*/}
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -23,7 +25,14 @@ export default function MessageForm({ onSend }) {
         }}
       >
         {/*input has 3 props, inc onChange = user typing*/}
-        <input name="myMessage" onChange={updateMessage} type="text" value={currentMessage}></input>
+        <input
+          name="myMessage"
+          //onChange handler fires method called updateMessage
+          onChange={updateMessage}
+          type="text"
+          value={currentMessage}
+          placeholder="Your message"
+        ></input>
         <button type="submit">Send</button>
       </form>
     </div>
