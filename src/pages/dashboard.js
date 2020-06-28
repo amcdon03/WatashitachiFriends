@@ -2,7 +2,7 @@
 
 import { Message } from "./Message"
 
-export const Dashboard = ({ studentMessages }) => {
+export default function Dashboard ({ studentMessages }) => {
   return (
     <div className="messages">
       {studentMessages.map((user, i) => (
@@ -10,6 +10,4 @@ export const Dashboard = ({ studentMessages }) => {
       ))}
     </div>
   )
-}
-
-export default Dashboard */
+} */

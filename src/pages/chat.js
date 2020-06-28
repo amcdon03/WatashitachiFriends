@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import MessageList from './messageList.js';
-import Title from './title';
-import MessageForm from './messageForm.js';
+import MessageList from '../components/messageList.js';
+import Title from '../components/title';
+import MessageForm from '../components/messageForm.js';
 
-export default function ChatPage() {
+export default function Chat() {
   const [messages, setMessages] = useState([
     { user: 'bubble sender', name: 'angel', text: 'Hey there!' },
     {
