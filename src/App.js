@@ -19,7 +19,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    auth().onAuthStateChanged((user) => {
+    // auth is coming from Firebase
+    // check "onAuthStateChanged" in the documentation
+    auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
           authenticated: true,
@@ -31,7 +33,7 @@ class App extends Component {
           loading: false,
         });
       }
-    });
+    })
   }
 
   render() {
