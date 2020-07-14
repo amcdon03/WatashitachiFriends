@@ -1,14 +1,14 @@
 import firebase from 'firebase';
 
-//Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyCNMecyIS5i9RFHUWfSfmt4lOu1U3e63jc',
-  authDomain: 'fren-zing.firebaseapp.com',
-  databaseURL: 'https://fren-zing.firebaseio.com',
-  projectId: 'fren-zing',
-  storageBucket: 'fren-zing.appspot.com',
-  messagingSenderId: '80324251261',
-  appId: '1:80324251261:web:23c970e6ddd50bb39eab14',
+var firebaseConfig = {
+  apiKey: "AIzaSyCCSspPlcPvQkIIdcR7pCaWxkADZd7Lw6Y",
+  authDomain: "watashinofriends.firebaseapp.com",
+  databaseURL: "https://watashinofriends.firebaseio.com",
+  projectId: "watashinofriends",
+  storageBucket: "watashinofriends.appspot.com",
+  messagingSenderId: "176115548449",
+  appId: "1:176115548449:web:4d683a7ac4e60fa375fe60",
+  measurementId: "G-BY0LSKCRDX"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
