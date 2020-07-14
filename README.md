@@ -1,4 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+frenZing - initial name of the website. Now replaced with Watashitachi Friends.
+
+A penpal site for MFL students. A securely managed web chat application allowing teachers to connect students one-to-one to students in another country, via their unique school email address.
+
+The teacher will act as moderator of the platform and will have the ability to initiate and curtail any communication between two parties. Students will be able to chat, doodle and share resources with their partner.
+
 
 ## Available Scripts
 
