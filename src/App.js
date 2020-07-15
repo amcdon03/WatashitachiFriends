@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/home';
 import Chat from './pages/chat';
 import Login from './pages/login';
-import Signup from './pages/signup';
+import Register from './pages/register';
 import Dashboard from './pages/dashboard';
 import { auth } from './services/firebase';
 import { PublicRoute, PrivateRoute } from './utils/route';
@@ -44,7 +44,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <PublicRoute path="/login" authenticated={this.state.authenticated} component={Login} />
-          <PublicRoute path="/signup" authenticated={this.state.authenticated} component={Signup} />
+          <PublicRoute path="/register" authenticated={this.state.authenticated} component={Register} />
           <PrivateRoute path="/chat" authenticated={this.state.authenticated} component={Chat} />
           <PrivateRoute
             path="/dashboard"
