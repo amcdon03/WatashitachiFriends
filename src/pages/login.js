@@ -35,12 +35,12 @@ export default class Login extends Component {
       <div>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
           <h1>
-            Login to <Link to="/">WatashitachiFriends</Link>
+            Log in to Watashitachi Friends
           </h1>
           <p>Fill in the form below to login to your account.</p>
           <div>
             <input
-              placeholder="Email"
+              placeholder="School Email"
               name="email"
               type="email"
               onChange={this.handleChange}
@@ -62,7 +62,7 @@ export default class Login extends Component {
           </div>
           <hr />
           <p>
-            Don't have an account? <Link to="/signup">Sign up</Link>
+            Don't have an account? <Link to="/signup">Get registered</Link>
           </p>
         </form>
       </div>

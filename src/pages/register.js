@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { signup } from '../utils/auth';
+import { register } from '../utils/auth';
 
-export default class SignUp extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ export default class SignUp extends Component {
     event.preventDefault();
     this.setState({ error: '' });
     try {
-      await signup(this.state.email, this.state.password);
+      await register(this.state.email, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -35,7 +35,7 @@ export default class SignUp extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <h1>
-            Sign Up to <Link to="/">WatashitachiFriends</Link>
+            Register with <Link to="/">Watashitachi Friends</Link>
           </h1>
           <p>Fill in the form below to create an account.</p>
           <div>
