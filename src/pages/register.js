@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { register } from '../utils/auth';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { register } from "../utils/auth";
 
 export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ export default class Register extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    this.setState({ error: '' });
+    this.setState({ error: "" });
     try {
       await register(this.state.email, this.state.password);
     } catch (error) {
@@ -34,9 +34,7 @@ export default class Register extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <h1>
-            Register with <Link to="/">Watashitachi Friends</Link>
-          </h1>
+          <h1>Register with Watashitachi Friends</h1>
           <p>Fill in the form below to create an account.</p>
           <div>
             <input
