@@ -8,7 +8,10 @@ import MessageForm from "../components/messageForm.js";
 export default function Chat() {
   const [user, setUser] = useState(auth().currentUser);
   const [chats, setChats] = useState([]);
-  const [content, setContent] = useState("");
+
+  // For now, this state is not being used
+  // const [content, setContent] = useState("");
+
   const [readError, setReadError] = useState(null);
   const [writeError, setWriteError] = useState(null);
 
@@ -31,8 +34,14 @@ export default function Chat() {
   }, []);
 
   //////////////////////
-  const messages = []; // empty vars intro'd so RTN block still works - so page won't break
-  const sendMessage = () => {}; // on having removed the hardcoded data
+  const messages = chats; // empty vars intro'd so RTN block still works - so page won't break
+  const sendMessage = (message) => {
+    db.ref("chats").push({
+      content: message,
+      timestamp: Date.now(),
+      uid: user.uid,
+    });
+  }; // on having removed the hardcoded data
   //////////////////////
 
   /*   const handleSubmit = (event) => {
