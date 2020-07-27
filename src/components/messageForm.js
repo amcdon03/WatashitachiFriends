@@ -10,6 +10,7 @@ export default function MessageForm({ onSend }) {
   };
 
   const handleMessageChange = (event) => {
+    console.log("msgChange", event.target.value);
     setCurrentMessage(event.target.value);
   };
 
