@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
-import Home from './pages/home';
-import Chat from './pages/chat';
-import Login from './pages/login';
-import Register from './pages/register';
-import Dashboard from './pages/dashboard';
-import { auth } from './services/firebase';
-import { PublicRoute, PrivateRoute } from './utils/route';
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Home from "./pages/home";
+import Chat from "./pages/chat";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Dashboard from "./pages/dashboard";
+import { auth } from "./services/firebase";
+import { PublicRoute, PrivateRoute } from "./utils/route";
 
 class App extends Component {
   constructor() {
@@ -21,7 +21,7 @@ class App extends Component {
   componentDidMount() {
     // auth is coming from Firebase
     // check "onAuthStateChanged" in the documentation
-    auth().onAuthStateChanged(user => {
+    auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
           authenticated: true,
@@ -33,7 +33,7 @@ class App extends Component {
           loading: false,
         });
       }
-    })
+    });
   }
 
   render() {
@@ -43,9 +43,21 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
-          <PublicRoute path="/login" authenticated={this.state.authenticated} component={Login} />
-          <PublicRoute path="/register" authenticated={this.state.authenticated} component={Register} />
-          <PrivateRoute path="/chat" authenticated={this.state.authenticated} component={Chat} />
+          <PublicRoute
+            path="/login"
+            authenticated={this.state.authenticated}
+            component={Login}
+          />
+          <PublicRoute
+            path="/register"
+            authenticated={this.state.authenticated}
+            component={Register}
+          />
+          <PrivateRoute
+            path="/chat"
+            authenticated={this.state.authenticated}
+            component={Chat}
+          />
           <PrivateRoute
             path="/dashboard"
             authenticated={this.state.authenticated}
