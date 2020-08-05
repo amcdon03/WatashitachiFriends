@@ -44,7 +44,7 @@
   flex-direction: column;
 }
 
-.sendForm input[type='text'] {
+.sendForm input[type="text"] {
   border-radius: 1em;
   width: 300px;
   height: 30px;
@@ -52,14 +52,14 @@
   margin: 10px 10px;
 }
 
-.sendForm button[type='submit'] {
+.sendForm button[type="submit"] {
   border-radius: 1em;
   height: 30px;
   background-color: white;
   color: black;
 }
 
-.sendForm button[type='submit']:hover {
+.sendForm button[type="submit"]:hover {
   cursor: pointer;
   background-color: #e7e7e7;
 }
