@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function MessageForm({ onSend }) {
+export default function MessageForm({ onSend, writeError }) {
   const [currentMessage, setCurrentMessage] = useState("");
 
   const handleSubmit = (event) => {

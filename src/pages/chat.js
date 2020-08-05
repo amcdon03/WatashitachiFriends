@@ -30,12 +30,17 @@ export default function Chat() {
   }, []);
 
   //////////////////////
-  const sendMessage = (message) => {
-    db.ref("chats").push({
-      content: message,
-      timestamp: Date.now(),
-      uid: user.uid,
-    });
+  const sendMessage = (newCurrentMessage) => {
+    setWriteError(null);
+    try {
+      db.ref("chats").push({
+        content: newCurrentMessage,
+        timestamp: Date.now(),
+        uid: user.uid,
+      });
+    } catch (error) {
+      setWriteError(error.message);
+    }
   };
   //////////////////////
 
@@ -45,8 +50,9 @@ export default function Chat() {
         Logged in as <strong>{user.email}</strong>
       </div>
       <Title />
-      <MessageList messages={chats} />
-      <MessageForm onSend={sendMessage} />
+      {/* trying to create a prop to hold the current user's id */}
+      <MessageList messages={chats} currentUserID={user.uid} />
+      <MessageForm onSend={sendMessage} error={writeError} />
     </section>
   );
 }
