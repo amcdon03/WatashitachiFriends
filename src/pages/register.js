@@ -32,7 +32,7 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className="conversation">
         <form onSubmit={this.handleSubmit}>
           <h1>Register with Watashitachi Friends</h1>
           <p>Fill in the form below to create an account.</p>

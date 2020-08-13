@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Title() {
   return (
-    <section className="headerArea">
+    <section className="conversation">
       <h1>
         <Link to="/chat">Watashitachi Friends</Link>
       </h1>
