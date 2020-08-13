@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function MessageForm({ onSend, writeError }) {
+export default function MessageForm({ onSend, error }) {
   const [currentMessage, setCurrentMessage] = useState("");
 
   const handleSubmit = (event) => {
@@ -24,8 +24,8 @@ export default function MessageForm({ onSend, writeError }) {
           value={currentMessage}
           placeholder="Your message"
         ></input>
-        {/* {error ? <p>{writeError}</p> : null} */}
         <button type="submit">Send</button>
+        {error ? <p className="error">{error}</p> : null}
       </form>
     </div>
   );
