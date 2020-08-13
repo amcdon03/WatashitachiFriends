@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { signin } from '../utils/auth';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { signin } from "../utils/auth";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ export default class Login extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    this.setState({ error: '' });
+    this.setState({ error: "" });
     try {
       await signin(this.state.email, this.state.password);
     } catch (error) {
@@ -32,11 +32,9 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="conversation">
         <form autoComplete="off" onSubmit={this.handleSubmit}>
-          <h1>
-            Log in to Watashitachi Friends
-          </h1>
+          <h1>Log in to Watashitachi Friends</h1>
           <p>Fill in the form below to login to your account.</p>
           <div>
             <input
@@ -62,7 +60,7 @@ export default class Login extends Component {
           </div>
           <hr />
           <p>
-            Don't have an account? <Link to="/signup">Get registered</Link>
+            Don't have an account? <Link to="/register">Get registered</Link>
           </p>
         </form>
       </div>
