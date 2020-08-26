@@ -10,8 +10,8 @@ export default function MessageList({ messages, currentUserId }) {
           <div
             className={
               currentUserId === message.uid
-                ? "bubble sender"
-                : "bubble recipient"
+                ? "bubble recipient"
+                : "bubble sender"
             }
             key={message.key}
           >
