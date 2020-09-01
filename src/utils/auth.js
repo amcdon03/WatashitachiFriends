@@ -1,10 +1,10 @@
 import { auth } from "../services/firebase";
 
-export function register(email, password) {
+export function SignUp(email, password) {
   return auth().createUserWithEmailAndPassword(email, password);
 }
 
-export function login(email, password) {
+export function SignIn(email, password) {
   return auth().signInWithEmailAndPassword(email, password);
 }
 

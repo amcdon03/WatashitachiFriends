@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { register } from "../utils/auth";
+import { SignIn } from "../utils/auth";
 
-export default class Register extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ export default class Register extends Component {
     event.preventDefault();
     this.setState({ error: "" });
     try {
-      await register(this.state.email, this.state.password);
+      await SignIn(this.state.email, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -33,17 +33,17 @@ export default class Register extends Component {
   render() {
     return (
       <div className="conversation">
-        <form onSubmit={this.handleSubmit}>
-          <h1>Register with Watashitachi Friends</h1>
-          <p>Fill in the form below to create an account.</p>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          <h1>Log in to Watashitachi Friends</h1>
+          <p>Fill in the form below to login to your account.</p>
           <div>
             <input
-              placeholder="Email"
+              placeholder="School Email"
               name="email"
               type="email"
               onChange={this.handleChange}
               value={this.state.email}
-            ></input>
+            />
           </div>
           <div>
             <input
@@ -52,15 +52,15 @@ export default class Register extends Component {
               onChange={this.handleChange}
               value={this.state.password}
               type="password"
-            ></input>
+            />
           </div>
           <div>
             {this.state.error ? <p>{this.state.error}</p> : null}
-            <button type="submit">Sign up</button>
+            <button type="submit">Login</button>
           </div>
-          <hr></hr>
+          <hr />
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Don't have an account? <Link to="/register">Get registered</Link>
           </p>
         </form>
       </div>

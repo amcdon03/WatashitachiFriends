@@ -1,5 +1,5 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
 
 export function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
@@ -9,7 +9,9 @@ export function PrivateRoute({ component: Component, authenticated, ...rest }) {
         authenticated === true ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+          <Redirect
+            to={{ pathname: "/Login", state: { from: props.location } }}
+          />
         )
       }
     />
@@ -21,7 +23,11 @@ export function PublicRoute({ component: Component, authenticated, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        authenticated === false ? <Component {...props} /> : <Redirect to={{ pathname: '/chat' }} />
+        authenticated === false ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/Chat" }} />
+        )
       }
     />
   );

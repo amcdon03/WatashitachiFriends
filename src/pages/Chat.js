@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
-import MessageList from "../components/messageList.js";
-import Title from "../components/title";
-import MessageForm from "../components/messageForm.js";
+import MessageForm from "../components/MessageForm.js";
+import Header from "../components/Header";
+import MessageList from "../components/MessageList.js";
 
 /*1. create a new project in current state: git.clone
  or commit, then undo commit
@@ -67,10 +67,10 @@ export default function Chat() {
       <div>
         Logged in as <strong>{user.email}</strong>
       </div>
-      <Title />
+      <Header />
       {/* trying to create a prop to hold the current user's id */}
-      <MessageList messages={chats} currentUserId={user.uid} />
-      <MessageForm onSend={sendMessage} error={writeError} />
+      <MessageForm messages={chats} currentUserId={user.uid} />
+      <MessageList onSend={sendMessage} error={writeError} />
     </section>
   );
 }
