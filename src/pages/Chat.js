@@ -4,7 +4,6 @@ import { db } from "../services/firebase";
 import Header from "../components/Header";
 import MessageForm from "../components/MessageForm.js";
 import MessageList from "../components/MessageList.js";
-import Footer from "../components/Footer.js";
 
 /*1. create a new project in current state: git.clone
  or commit, then undo commit
