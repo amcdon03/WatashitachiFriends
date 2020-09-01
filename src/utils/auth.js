@@ -4,7 +4,7 @@ export function register(email, password) {
   return auth().createUserWithEmailAndPassword(email, password);
 }
 
-export function signin(email, password) {
+export function login(email, password) {
   return auth().signInWithEmailAndPassword(email, password);
 }
 

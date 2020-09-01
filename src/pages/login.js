@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { signin } from "../utils/auth";
+import { login } from "../utils/auth";
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ export default class Login extends Component {
     event.preventDefault();
     this.setState({ error: "" });
     try {
-      await signin(this.state.email, this.state.password);
+      await login(this.state.email, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
