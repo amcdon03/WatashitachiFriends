@@ -23,6 +23,7 @@ export function setSchool(schoolName) {
       // An error happened.
     });
 }
+
 export function setUserRole(isTeacher) {
   const user = auth().currentUser;
 
@@ -37,4 +38,7 @@ export function setUserRole(isTeacher) {
       console.log(error);
       // An error happened.
     });
+}
+export function Logout() {
+  return auth().signOut();
 }

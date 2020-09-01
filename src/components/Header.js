@@ -1,9 +1,14 @@
 import React from "react";
+import { auth } from "../services/firebase";
 
-export default function Header() {
+export default function Header({ user }) {
   return (
     <section className="headerArea">
-      <h3>Yay! Let's Chat!</h3>
+      <div>
+        Logged in as <strong>{user.email}</strong>
+        <button onClick={() => auth().signOut()}>Logout</button>
+      </div>
+      <br />
     </section>
   );
 }
