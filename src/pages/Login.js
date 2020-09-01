@@ -25,6 +25,7 @@ export default class Login extends Component {
     this.setState({ error: "" });
     try {
       await SignIn(this.state.email, this.state.password);
+      //console.log('User signs in')
     } catch (error) {
       this.setState({ error: error.message });
     }
