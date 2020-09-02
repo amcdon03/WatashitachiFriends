@@ -7,7 +7,7 @@ export function SignUp(email, password) {
 export function SignIn(email, password) {
   return auth().signInWithEmailAndPassword(email, password);
 }
-
+///////////////////////////////////////////////////
 export function setSchool(schoolName) {
   const user = auth().currentUser;
 
@@ -23,7 +23,7 @@ export function setSchool(schoolName) {
       // An error happened.
     });
 }
-
+//////////////////////////////////////////////////
 export function setUserRole(isTeacher) {
   const user = auth().currentUser;
 
@@ -39,6 +39,7 @@ export function setUserRole(isTeacher) {
       // An error happened.
     });
 }
+//////////////////////////////////////////////////
 export function Logout() {
   return auth().signOut();
 }
