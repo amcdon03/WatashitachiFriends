@@ -6,7 +6,7 @@ export default function Landing() {
   return (
     <section className="conversation">
       <h1>
-        <Link to="/Chat">Watashitachi Friends</Link>
+        <Link to="/chat">Watashitachi Friends</Link>
       </h1>
       <h3>Penfriends sharing language and culture</h3>
       <Footer />

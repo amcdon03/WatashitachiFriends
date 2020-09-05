@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Landing from "./pages/Landing";
-import Chat from "./pages/Chat";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import Landing from "./pages/landing";
+import Chat from "./pages/chat";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Dashboard from "./pages/dashboard";
 import { auth } from "./services/firebase";
 import { PublicRoute, PrivateRoute } from "./utils/route";
 
@@ -44,22 +44,22 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <PublicRoute
-            path="/Login"
+            path="/login"
             authenticated={this.state.authenticated}
             component={Login}
           />
           <PublicRoute
-            path="/Register"
+            path="/register"
             authenticated={this.state.authenticated}
             component={Register}
           />
           <PrivateRoute
-            path="/Chat"
+            path="/chat"
             authenticated={this.state.authenticated}
             component={Chat}
           />
           <PrivateRoute
-            path="/Dashboard"
+            path="/dashboard"
             authenticated={this.state.authenticated}
             component={Dashboard}
           />

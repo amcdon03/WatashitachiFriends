@@ -10,7 +10,7 @@ export function PrivateRoute({ component: Component, authenticated, ...rest }) {
           <Component {...props} />
         ) : (
           <Redirect
-            to={{ pathname: "/Login", state: { from: props.location } }}
+            to={{ pathname: "/login", state: { from: props.location } }}
           />
         )
       }
@@ -26,7 +26,7 @@ export function PublicRoute({ component: Component, authenticated, ...rest }) {
         authenticated === false ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: "/Chat" }} />
+          <Redirect to={{ pathname: "/chat" }} />
         )
       }
     />
