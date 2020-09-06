@@ -2,7 +2,7 @@
 
 import { Message } from "./Message"
 
-export default function Dashboard ({ studentMessages }) => {
+export default function Dashboard ({ studentMessages }) {
   return (
     <div className="messages">
       {studentMessages.map((user, i) => (
