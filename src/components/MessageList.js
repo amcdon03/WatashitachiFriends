@@ -1,32 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function MessageList({ onSend, error }) {
-  const [currentMessage, setCurrentMessage] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSend(currentMessage);
-    setCurrentMessage("");
-  };
-
-  const handleMessageChange = (event) => {
-    //console.log("msgChange", event.target.value);
-    setCurrentMessage(event.target.value);
-  };
-
+export default function MessageList({ messages, currentUserId }) {
   return (
-    <div className="sendForm">
-      <form onSubmit={handleSubmit}>
-        <input
-          name="myMessage"
-          onChange={handleMessageChange}
-          type="text"
-          value={currentMessage}
-          placeholder="Your message"
-        ></input>
-        <button type="submit">Send</button>
-        {error ? <p className="error">{error}</p> : null}
-      </form>
-    </div>
+    <section className="messageArea">
+      {messages.map((message) => {
+        return (
+          // div has 2 elements: className and key
+          // msg is displayed in between
+          <div
+            className={
+              currentUserId === message.uid
+                ? "bubble recipient"
+                : "bubble sender"
+            }
+            key={message.key}
+          >
+            {message.content}
+          </div>
+        );
+      })}
+    </section>
   );
 }
