@@ -7,43 +7,31 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  /*     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }; */
-
-  /*   handleChange(event) {
-        this.setState({
-          [event.target.name]: event.target.value,
-        });
-      }; */
-
-  const handleChange = (event) => {
-    (setEmail, setPassword)({
-      [event.target.name]: event.target.value,
-    });
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
-  /*   async handleSubmit(event) {
-        event.preventDefault();
-        setError({ error: "" });
-        try {
-          await SignIn(email, password);
-          //console.log('User signs in')
-        } catch (error) {
-          setError({ error: error.message });
-        }
-      } */
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setError({ error: "" });
+    setError("");
+    //console.log("user does a submit");
+
+    //console.log("user enters email: ", email);
+    //console.log("and a password: ", password);
     try {
-      SignIn(email, password);
-      //console.log('User signs in')
+      await SignIn(email, password);
+      //console.log("user signs in");
     } catch (error) {
-      setError({ error: error.message });
+      //console.log("there has been an error: ", error);
+      setError(error.message);
     }
   };
+
+  //console.log("error ", error);
 
   return (
     <div className="conversation">
@@ -55,7 +43,7 @@ export default function Login() {
             placeholder="School Email"
             name="email"
             type="email"
-            onChange={handleChange}
+            onChange={handleEmailChange}
             value={email}
           />
         </div>
@@ -63,7 +51,7 @@ export default function Login() {
           <input
             placeholder="Password"
             name="password"
-            onChange={handleChange}
+            onChange={handlePasswordChange}
             value={password}
             type="password"
           />

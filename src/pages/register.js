@@ -1,84 +1,101 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { SignUp, setSchool, setUserRole } from "../utils/auth";
+import { SignUp } from "../utils/auth";
 
-export default class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [schoolName, setSchoolName] = useState("");
+  const [isTeacher, setIsTeacher] = useState(false);
+  /*       error: null,
       email: "",
       password: "",
       schoolName: "",
-      isTeacher: false,
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+      isTeacher: false, */
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
 
-  async handleSubmit(event) {
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleTeacherStatus = (event) => {
+    setIsTeacher(event.target.value);
+  };
+
+  const handleSchoolName = (event) => {
+    setSchoolName(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({ error: "" });
+    setError("");
     try {
-      await SignUp(this.state.email, this.state.password);
-      setSchool(this.state.schoolName);
-      setUserRole(this.state.isTeacher);
+      await SignUp(email, password);
     } catch (error) {
-      this.setState({ error: error.message });
+      setError(error.message);
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="conversation">
-        <form onSubmit={this.handleSubmit}>
-          <h1>Register with Watashitachi Friends</h1>
-          <p>Select your school</p>
-          <select>
-            <option value="LondonAcademy">London Academy</option>
-            <option value="HamburgGymnasium">Hamburg Gymnasium</option>
-          </select>
-          <p>Create your login credentials</p>
+  return (
+    <div className="conversation">
+      <form onSubmit={handleSubmit}>
+        <h1>Register with Watashitachi Friends</h1>
+        <p>Select your school</p>
+        <select onChange={handleSchoolName} value={schoolName}>
+          <option value="LondonAcademy">London Academy</option>
+          <option value="HamburgGymnasium">Hamburg Gymnasium</option>
+        </select>
+        <p>Create your login credentials</p>
+        <div>
+          <input
+            placeholder="Email"
+            name="email"
+            type="email"
+            onChange={handleEmailChange}
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <input
+            placeholder="Password"
+            name="password"
+            onChange={handlePasswordChange}
+            value={password}
+            type="password"
+          ></input>
+          <p>Confirm you are a teacher</p>
           <div>
             <input
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={(event) => this.handleChange(event)}
-              value={this.state.email}
-            ></input>
-          </div>
-          <div>
+              type="radio"
+              value="yes"
+              name="confirm"
+              onChange={handleTeacherStatus}
+            />{" "}
+            Yes
             <input
-              placeholder="Password"
-              name="password"
-              onChange={(event) => this.handleChange(event)}
-              value={this.state.password}
-              type="password"
-            ></input>
-            <p>Confirm you are a teacher</p>
-            <div onChange={(event) => this.handleChange(event)}>
-              <input type="radio" value="yes" name="confirm" /> Yes
-              <input type="radio" value="no" defaultChecked name="confirm" /> No
-              <p></p>
-            </div>
+              type="radio"
+              value="no"
+              name="confirm"
+              defaultChecked={true}
+              onChange={handleTeacherStatus}
+            />{" "}
+            No
+            <p></p>
           </div>
-          <div>
-            {this.state.error ? <p>{this.state.error}</p> : null}
-            <button type="submit">Register</button>
-          </div>
-          <hr></hr>
-          <p>
-            Already have an account? <Link to="/Login">Login</Link>
-          </p>
-        </form>
-      </div>
-    );
-  }
+        </div>
+        <div>
+          {error ? <p>{error}</p> : null}
+          <button type="submit">Register</button>
+        </div>
+        <hr></hr>
+        <p>
+          Already have an account? <Link to="/Login">Login</Link>
+        </p>
+      </form>
+    </div>
+  );
 }
