@@ -14,10 +14,13 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // auth is coming from Firebase
-    // check "onAuthStateChanged" in the documentation
+    // auth is coming from FB
+    // check "onAuthStateChanged" in the docs
+    // is user getting here or not?
+    console.log("abracadabra");
 
     auth().onAuthStateChanged((user) => {
+      // is user getting here?
       if (user) {
         // User is signed in.
         setAuthenticated(true);
