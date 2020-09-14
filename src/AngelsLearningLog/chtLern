@@ -1,0 +1,94 @@
+import React, { useState, useEffect } from "react";
+import { auth } from "../services/firebase";
+import { db } from "../services/firebase";
+import Header from "../components/Header";
+import MessageForm from "../components/MessageForm.js";
+import MessageList from "../components/MessageList.js";
+
+/*1. create a new project in current state: git.clone
+ or commit, then undo commit
+FIXED CSS
+- had to identify/pull out unique message key (set by FB), needed by React
+- used a filter on classname
+- error: I passed a typo as currentUserID != currentUserId
+PROPS
+- made sure prop name here matched prop name passed to child (the 'props' bit is like the 'property' bit in CSS)
+TESTS
+- error msg in msgForm worked by passing value 'test' instead of 'writeError'
+- console logged snapshot, snapshot.val to find msg uid
+- console logged msg1 to see msgs in snapshot
+- used Inspector to see if className rendered as desired in msgLst (mistake, wrote: bubble.sender, not bubble sender)
+*/
+
+export default function Chat() {
+  // useState -> {user, setUser} => const result = useState(,,,); const user = result.user ; const setUser = result.setUser;
+  const [user] = useState(auth().currentUser);
+  const [chats, setChats] = useState([]);
+  const [readError, setReadError] = useState(null);
+  const [writeError, setWriteError] = useState(null);
+  //this.myRef = React.createRef();
+
+  //This Fn uses a callback - consisting of Anonymous Fn and empty array
+  useEffect(() => {
+    //const chatArea = this.myRef.current;
+    try {
+      db.ref("rooms").on("value", (snapshot) => {
+        let messages = [];
+        snapshot.forEach((snap) => {
+          messages.push({ key: snap.key, ...snap.val() });
+          //console.log("snap", snap.val);
+        });
+        setChats(messages);
+        //chatArea.scrollBy(0, chatArea.scrollHeight);
+      });
+    } catch (error) {
+      setReadError(error.message);
+      //console.log("error", error);
+    }
+  }, []);
+
+  //////////////////////
+  const sendMessage = (newCurrentMessage) => {
+    setWriteError(null);
+    try {
+      db.ref("rooms").push({
+        room: 3,
+        content: newCurrentMessage,
+        timestamp: Date.now(),
+        uid: user.uid,
+      });
+    } catch (error) {
+      setWriteError(error.message);
+    }
+  };
+  //////////////////////
+
+  // This function should retrieve the rooms database of firebase
+  const getData = () => {
+    let rooms = [];
+    let ref = db.ref("rooms");
+
+    if (ref) {
+      ref.on("value", function (snapshot) {
+        let values = snapshot.val();
+        snapshot.forEach((snap) => {
+          let obj = { key: snap.key, ...snap.val() };
+          rooms.push(obj.room);
+          //console.log(rooms.sort());
+        });
+      });
+    }
+  };
+
+  return (
+    <section className="conversation">
+      {readError ? readError : ""}
+      <Header user={user} />
+      <h3>Yay! Let's Chat!</h3>
+      {getData()}
+      {/* trying to create a prop to hold the current user's id */}
+      <MessageList messages={chats} currentUserId={user.uid} />
+      <MessageForm onSend={sendMessage} error={writeError} />
+    </section>
+  );
+}
