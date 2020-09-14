@@ -17,7 +17,7 @@ export default function App() {
     // auth is coming from FB
     // check "onAuthStateChanged" in the docs
     // is user getting here or not?
-    console.log("abracadabra");
+    // console.log("abracadabra");
 
     auth().onAuthStateChanged((user) => {
       // is user getting here?
