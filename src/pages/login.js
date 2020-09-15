@@ -6,6 +6,7 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -13,6 +14,10 @@ export default function Login() {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleNameChange = (event) => {
+    setDisplayName(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -54,6 +59,15 @@ export default function Login() {
             onChange={handlePasswordChange}
             value={password}
             type="password"
+          />
+        </div>
+        <div>
+          <input
+            placeholder="Profile Name"
+            name="displayName"
+            onChange={handleNameChange}
+            value={displayName}
+            type="text"
           />
         </div>
         <div>
