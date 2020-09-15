@@ -33,7 +33,7 @@ export default function Chat() {
   }, []);
 
   //////////////////////
-  const sendMessage = (newCurrentMessage) => {
+  function sendMessage(newCurrentMessage) {
     setWriteError(null);
     try {
       db.ref("rooms").push({
@@ -45,7 +45,7 @@ export default function Chat() {
     } catch (error) {
       setWriteError(error.message);
     }
-  };
+  }
   //////////////////////
 
   // This function should retrieve the rooms database of firebase
