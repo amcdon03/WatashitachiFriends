@@ -1,0 +1,54 @@
+In NoSQL, model the db to what we see on screen:
+
+ChatRooms (Firestore collection, or Firebase node)  
+    ChatRoom1 (document)
+        Messages (collection)
+            Message1_1 (document)
+            Message1_2 (document)
+    ChatRoom2 (document)
+        Messages (collection)
+            Messages2_1 (document)
+            Messages2_2 (document)
+
+    This way we can load msgs from any particular chat room. (Easy to scale out)
+================================================================================
+
+Model ChatRoom ID after participants, i.e. to set up 1-to-1 chats endpoint
+
+export default function ChatRoom (toString: uuid1, toString: uuid2){
+    let roomName =
+    if ("uuid1" < "uuid2" ?
+        "uuid1" + "_" + "uuid2" : 
+        "uuid2" + "_" + "uuid1")
+    return roomName
+}
+
+const user1 = "maria"; //uuid of user1*
+const user2 = "angel"; //uuid of user2*
+let roomName = 'chat_'+(user1<user2 ?
+                user1+'_'+user2 :
+                user2+'_'+user1);
+console.log(user1+', '+user2+' => '+roomName)
+    "maria", "angel" => "angel_maria"
+
+This orders the uuids lexacographically in a compound key
+================================================================================
+
+How to show a list of chat rooms for the current user:
+
+"userChatRooms": {
+    "maria":{"angel_maria":true},
+    "angel":{"angel_maria":true}
+}
+
+    Can hash the combined uuids to make them shorter. Eg.
+
+    import SHA256 from 'crypto-js/SHA256
+    let uuid1 = 234
+    let uuid2 = 567
+    let chatHash = SHA256('user1:'+uuid1+ '_user2:' +uuid2)'
+================================================================================
+
+Refs:
+https://stackoverflow.com/questions/54008366/how-to-structure-firestore-database-in-chat-app
+https://stackoverflow.com/questions/33540479/best-way-to-manage-chat-channels-in-firebase
