@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { SignUp } from "../utils/auth";
+import { SignUp, UserRole, SchoolName } from "../utils/auth";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -8,11 +8,6 @@ export default function Register() {
   const [error, setError] = useState(null);
   const [schoolName, setSchoolName] = useState("");
   const [isTeacher, setIsTeacher] = useState(false);
-  /*       error: null,
-      email: "",
-      password: "",
-      schoolName: "",
-      isTeacher: false, */
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -23,7 +18,8 @@ export default function Register() {
   };
 
   const handleTeacherStatus = (event) => {
-    setIsTeacher(event.target.value);
+    const value = event.target.value;
+    setIsTeacher(value);
   };
 
   const handleSchoolName = (event) => {
@@ -35,6 +31,8 @@ export default function Register() {
     setError("");
     try {
       await SignUp(email, password);
+      /*       await SchoolName(school);
+      await UserRole(isTeacher); */
     } catch (error) {
       setError(error.message);
     }
@@ -72,6 +70,7 @@ export default function Register() {
             <input
               type="radio"
               value="yes"
+              //checked={isTeacher === "yes"}
               name="confirm"
               onChange={handleTeacherStatus}
             />{" "}
@@ -81,6 +80,7 @@ export default function Register() {
               value="no"
               name="confirm"
               defaultChecked={true}
+              //checked={isTeacher === "no"}
               onChange={handleTeacherStatus}
             />{" "}
             No

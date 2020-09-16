@@ -1,6 +1,5 @@
 /* import React from "react"
-
-import { Message } from "./Message"
+import MessageForm from "../components/MessageForm.js";
 
 export default function Dashboard ({ studentMessages }) {
   return (

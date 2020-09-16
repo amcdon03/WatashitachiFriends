@@ -8,7 +8,7 @@ export function SignIn(email, password) {
   return auth().signInWithEmailAndPassword(email, password);
 }
 ///////////////////////////////////////////////////
-export function setSchool(schoolName) {
+export function SchoolName(schoolName) {
   const user = auth().currentUser;
 
   user
@@ -22,9 +22,11 @@ export function setSchool(schoolName) {
       console.log(error);
       // An error happened.
     });
+
+  return schoolName;
 }
 //////////////////////////////////////////////////
-export function setUserRole(isTeacher) {
+export function UserRole(isTeacher) {
   const user = auth().currentUser;
 
   user
@@ -38,6 +40,8 @@ export function setUserRole(isTeacher) {
       console.log(error);
       // An error happened.
     });
+
+  return isTeacher;
 }
 //////////////////////////////////////////////////
 export function Logout() {
