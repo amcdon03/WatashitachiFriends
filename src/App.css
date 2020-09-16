@@ -64,7 +64,7 @@
 
 .sendForm button[type="submit"]:hover {
   cursor: pointer;
-  background-color: #e7e7e7;
+  background-color: #cccccc;
 }
 
 .error {

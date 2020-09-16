@@ -71,7 +71,7 @@ export default function Login() {
           />
         </div>
         <div>
-          {error ? <p>{error}</p> : null}
+          {error ? <p className="error">{error}</p> : null}
           <button type="submit">Login</button>
         </div>
         <hr />
