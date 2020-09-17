@@ -18,8 +18,15 @@ export default function Register() {
   };
 
   const handleTeacherStatus = (event) => {
-    const value = event.target.value;
-    setIsTeacher(value);
+    //console.log("event is:", event);
+    const str2bool = (value) => {
+      if (value && typeof value === "string") {
+        if (value.toLowerCase() === "true") return true;
+        if (value.toLowerCase() === "false") return false;
+      }
+      return value;
+    };
+    setIsTeacher(str2bool(event.target.value));
   };
 
   const handleSchoolName = (event) => {
@@ -69,18 +76,16 @@ export default function Register() {
           <div>
             <input
               type="radio"
-              value="yes"
-              //checked={isTeacher === "yes"}
+              value="true"
               name="confirm"
               onChange={handleTeacherStatus}
             />{" "}
             Yes
             <input
               type="radio"
-              value="no"
+              value="false"
               name="confirm"
               defaultChecked={true}
-              //checked={isTeacher === "no"}
               onChange={handleTeacherStatus}
             />{" "}
             No
@@ -88,7 +93,7 @@ export default function Register() {
           </div>
         </div>
         <div>
-          {error ? <p>{error}</p> : null}
+          {error ? <p className="error">{error}</p> : null}
           <button type="submit">Register</button>
         </div>
         <hr></hr>
