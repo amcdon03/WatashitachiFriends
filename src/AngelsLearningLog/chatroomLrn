@@ -1,42 +1,97 @@
 In NoSQL, model the db to what we see on screen:
 
 ChatRooms (Firestore collection, or Firebase node)  
-    ChatRoom1 (document)
-        Messages (collection)
-            Message1_1 (document)
+    ChatRoom1 (document)  --------------- create custom roomID
+        Messages (collection)------------ produces messageID
+            Message1_1 (document) 
+                from : "angel" ---------- my student's emailID / userID
+                msg : "hiya"   ---------- msg sent from my student
             Message1_2 (document)
+                from : "maria"
+                msg : "hey yourself"
     ChatRoom2 (document)
         Messages (collection)
             Messages2_1 (document)
             Messages2_2 (document)
+===========================================================================
 
-    This way we can load msgs from any particular chat room. (Easy to scale out)
+ChatRooms (Firestore collection, or Firebase node)  
+    ChatRoom1 (document)                <---------- create custom roomID with paired studentIDs**
+        ApprovedMessages (collection)   <---------- produces messageID
+            Message1_1 (document) 
+                from : "angel"          <---------- my student's emailID / userID
+                msg : "hiya"            <---------- msg sent from my student
+                timestamp : "2020-09-16T19:45:00"
+                teacher : "me"          <---------- the teacher's email
+            Message1_2 (document)
+                from : "maria"
+                msg : "hey yourself"
+                timestamp : "2020-09-16T19:46:00"
+        PendingMessages (collection)
+            Message (document)
+                from : "angel"
+                msg : "foobar"
+                timestamp : "2020-09-16T19:49:00"
+=======================================================================
+
+ChatRooms (Firestore collection, or Firebase node)  
+    StudentPairs (document)  -------------------- create custom roomID
+        ApprovedMessages (collection)------------ produces messageID
+            Message1_1 (document) 
+                approved : true
+                read : true
+                from : "angel" ---------- my student's emailID / userID
+                teacher : "me"  ------ the teacher's email
+                msg : "hiya"   ---------- msg sent from my student
+                timestamp : "2020-09-16T19:45:00"
+            Message1_2 (document)
+                approved : true
+                read : false ------ has the recipient user (angel) read this message yet?
+                from : "maria"
+                teacher : "them"
+                msg : "hey yourself"
+                timestamp : "2020-09-16T19:46:00"
+            Message (document)
+                approved : false
+                from : "angel"
+                msg : "first unapproved message"
+                timestamp : "2020-09-16T19:49:00"
+            Message (document)
+                approved : false
+                from : "angel"
+                msg : "second unapproved message"
+                timestamp : "2020-09-16T20:49:00"
 ================================================================================
 
-Model ChatRoom ID after participants, i.e. to set up 1-to-1 chats endpoint
+
+ Way to target msg: const messageRef = db.collection('rooms').doc(room1)
+                                     .collection('messages).doc('message1_1')
+================================================================================
+
+**Model ChatRoom ID after participants, i.e. to set up 1-to-1 chats endpoint
 
 export default function ChatRoom (toString: uuid1, toString: uuid2){
-    let roomName =
+    let roomName = ???
     if ("uuid1" < "uuid2" ?
         "uuid1" + "_" + "uuid2" : 
         "uuid2" + "_" + "uuid1")
     return roomName
 }
 
-const user1 = "maria"; //uuid of user1*
-const user2 = "angel"; //uuid of user2*
-let roomName = 'chat_'+(user1<user2 ?
-                user1+'_'+user2 :
-                user2+'_'+user1);
-console.log(user1+', '+user2+' => '+roomName)
-    "maria", "angel" => "angel_maria"
+// const user1 = "maria"; //uuid of user1*
+// const user2 = "angel"; //uuid of user2*
+// let roomName = 'chat_'+(user1<user2 ?
+//                 user1+'_'+user2 :
+//                 user2+'_'+user1);
+// console.log(user1+', '+user2+' => '+roomName)
+//     "maria", "angel" => "angel_maria"
 
 This orders the uuids lexacographically in a compound key
 ================================================================================
 
 How to show a list of chat rooms for the current user:
 
-"userChatRooms": {
+"studentPairs": {
     "maria":{"angel_maria":true},
     "angel":{"angel_maria":true}
 }
