@@ -6,7 +6,7 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  const [profileName, setProfileName] = useState({ profileName: "" });
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -15,28 +15,22 @@ export default function Login() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
+  // Sets a profile name here?
   const handleNameChange = (event) => {
-    setDisplayName(event.target.value);
+    event.persist();
+    setProfileName(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
-    //console.log("user does a submit");
 
-    //console.log("user enters email: ", email);
-    //console.log("and a password: ", password);
     try {
       await SignIn(email, password);
-      //console.log("user signs in");
     } catch (error) {
-      //console.log("there has been an error: ", error);
       setError(error.message);
     }
   };
-
-  //console.log("error ", error);
 
   return (
     <div className="conversation">
@@ -61,12 +55,13 @@ export default function Login() {
             type="password"
           />
         </div>
+        <br />
         <div>
           <input
             placeholder="Profile Name"
-            name="displayName"
+            name="profileName"
             onChange={handleNameChange}
-            value={displayName}
+            value={profileName}
             type="text"
           />
         </div>
