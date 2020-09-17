@@ -1,5 +1,7 @@
 import firebase from "firebase";
 
+const settings = { timestampsInSnapshots: true };
+
 var firebaseConfig = {
   apiKey: "AIzaSyCCSspPlcPvQkIIdcR7pCaWxkADZd7Lw6Y",
   authDomain: "watashinofriends.firebaseapp.com",
@@ -12,6 +14,8 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+firebase.settings(settings);
 
 export const auth = firebase.auth;
 export const db = firebase.database();
