@@ -1,0 +1,25 @@
+Students
+- suid(email)
+- displayName(name)
+- email
+- tuid/displayName(foreign key)
+
+Teachers
+- tuid(email)
+- displayName(name)
+
+Class
+- suid(email)
+- tuid(email)
+
+
+ChatApp
+    Suid1_Suid2
+
+what happens to the data - how data stored <-- bus logic (how data structure works)
+(lives in model interaction with the database) APIs made from model
+eg. connection to 
+
+ 
+functional logic - check verification where does it go
+(controller calls a method/function to do functional logic on it)
