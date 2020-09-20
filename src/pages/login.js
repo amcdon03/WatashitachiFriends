@@ -6,7 +6,7 @@ export default function Login() {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [profileName, setProfileName] = useState({ profileName: "" });
+  const [username, setUsername] = useState("");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,7 +18,7 @@ export default function Login() {
   // Sets a profile name here?
   const handleNameChange = (event) => {
     event.persist();
-    setProfileName(event.target.value);
+    setUsername(event.target.value);
   };
 
   const handleSubmit = async (event) => {
@@ -59,12 +59,13 @@ export default function Login() {
         <div>
           <input
             placeholder="Profile Name"
-            name="profileName"
+            name="username"
             onChange={handleNameChange}
-            value={profileName}
+            value={username}
             type="text"
           />
         </div>
+        <br />
         <div>
           {error ? <p className="error">{error}</p> : null}
           <button type="submit">Login</button>
