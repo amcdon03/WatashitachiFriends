@@ -1,7 +1,5 @@
 import firebase from "firebase";
 
-const settings = { timestampsInSnapshots: true };
-
 var firebaseConfig = {
   apiKey: "AIzaSyCCSspPlcPvQkIIdcR7pCaWxkADZd7Lw6Y",
   authDomain: "watashinofriends.firebaseapp.com",
