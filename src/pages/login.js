@@ -15,6 +15,7 @@ export default function Login() {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
   // Sets a profile name here?
   const handleNameChange = (event) => {
     event.persist();
@@ -26,7 +27,7 @@ export default function Login() {
     setError("");
 
     try {
-      await SignIn(email, password);
+      await SignIn(email, password, username);
     } catch (error) {
       setError(error.message);
     }
