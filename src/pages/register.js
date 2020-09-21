@@ -38,8 +38,6 @@ export default function Register() {
     setError("");
     try {
       await SignUp(email, password);
-      /*       await SchoolName(school);
-      await UserRole(isTeacher); */
     } catch (error) {
       setError(error.message);
     }
