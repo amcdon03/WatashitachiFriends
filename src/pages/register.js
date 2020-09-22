@@ -17,15 +17,17 @@ export default function Register() {
     setPassword(event.target.value);
   };
 
+  const str2bool = (value) => {
+    if (value && typeof value === "string") {
+      if (value.toLowerCase() === "true") return true;
+      if (value.toLowerCase() === "false") return false;
+    }
+    return value;
+  };
+
   const handleTeacherStatus = (event) => {
     //console.log("event is:", event);
-    const str2bool = (value) => {
-      if (value && typeof value === "string") {
-        if (value.toLowerCase() === "true") return true;
-        if (value.toLowerCase() === "false") return false;
-      }
-      return value;
-    };
+    console.log(str2bool(event.target.value));
     setIsTeacher(str2bool(event.target.value));
   };
 
@@ -33,11 +35,11 @@ export default function Register() {
     setSchoolName(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setError("");
     try {
-      await SignUp(email, password);
+      SignUp(email, password, isTeacher);
     } catch (error) {
       setError(error.message);
     }
