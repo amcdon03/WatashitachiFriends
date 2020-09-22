@@ -1,7 +1,15 @@
 import { auth } from "../services/firebase";
 
-export function SignUp(email, password) {
-  return auth().createUserWithEmailAndPassword(email, password);
+export async function SignUp(email, password, isTeacher) {
+  auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then((user) => {
+      const currentUser = auth().currentUser;
+      console.log(user);
+      currentUser
+        .updateProfile({ role: isTeacher ? "teacher" : "student" })
+        .catch((error) => console.log({ error }));
+    });
 }
 
 ///////////////////////////////////////////////////
@@ -9,31 +17,29 @@ export function SignIn(email, password) {
   return auth().signInWithEmailAndPassword(email, password);
 }
 
-export default function Profile() {
+/* export default function Profile() {
   // 1. How to get a user's info to complete a profile
   return auth().currentUser.displayName;
-}
+} */
 
 ///////////////////////////////////////////////////
 // 2. https://firebase.google.com/docs/auth/web/start
 /* Attach the observer using the onAuthStateChanged method.
   When a user successfully signs in, you can get information 
-  about the user in the observer.
-  
-  auth().onAuthStateChanged(function (user) {
+  about the user in the observer. */
+
+/* auth().onAuthStateChanged(function (user) {
   if (user) {
+    console.log({ user });
     // User is signed in.
     const displayName = user.displayName;
     const email = user.email;
-    const emailVerified = user.emailVerified;
-    const photoURL = user.photoURL;
-    const isAnonymous = user.isAnonymous;
+    const isTeacher = user.isTeacher;
     const uid = user.uid;
-    const providerData = user.providerData;
     // ...
   } else {
     // User is signed out.
-    // ...
+    console.log("no user");
   }
 }); */
 

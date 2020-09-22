@@ -11,7 +11,7 @@ export default function Chat() {
   const [chats, setChats] = useState([]);
   const [readError, setReadError] = useState(null);
   const [writeError, setWriteError] = useState(null);
-
+  //console.log("user:",user);
   // useEffect fn loads the room data from the FB realtime db
   useEffect(() => {
     try {
@@ -20,7 +20,7 @@ export default function Chat() {
         console.log("msg4st:", messagesForReceivingStudent);
         snapshot.forEach((snap) => {
           messagesForReceivingStudent.push({ key: snap.key, ...snap.val() });
-          console.log("snap", snap.val);
+          //console.log("snap", snap.val);
         });
         setChats(messagesForReceivingStudent); // shd capture msgs for pair of sts
       });
@@ -35,7 +35,7 @@ export default function Chat() {
     setWriteError(null);
     try {
       db.ref("chatrooms").push({
-        sender: user.displayName,
+        username: user.username,
         content: newCurrentMessage,
         timestamp: Date.now(),
         //teacher: user.teacher.email, // how do i get this info? when cmmtd out, breaks

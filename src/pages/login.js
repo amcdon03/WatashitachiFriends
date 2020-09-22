@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { db } from "../services/firebase";
 import { SignIn } from "../utils/auth";
 
 export default function Login() {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState({ nickname: "" });
+  const ref = db.ref("users/");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -19,15 +21,27 @@ export default function Login() {
   // Sets a profile name here?
   const handleNameChange = (event) => {
     event.persist();
-    setUsername(event.target.value);
+    setUsername({ ...username, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    ref
+      .orderByChild("username")
+      .equalTo(username.nickname)
+      .once("value", (snapshot) => {
+        if (snapshot.exists()) {
+          localStorage.setItem("nickname", username.nickname);
+        } else {
+          const newUser = db.ref("users/").push();
+          newUser.set(username);
+          localStorage.setItem("nickname", username.nickname);
+        }
+      });
     setError("");
 
     try {
-      await SignIn(email, password, username);
+      await SignIn(email, password);
     } catch (error) {
       setError(error.message);
     }
@@ -60,9 +74,9 @@ export default function Login() {
         <div>
           <input
             placeholder="Profile Name"
-            name="username"
+            name="nickname"
             onChange={handleNameChange}
-            value={username}
+            value={username.nickname}
             type="text"
           />
         </div>
