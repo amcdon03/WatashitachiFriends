@@ -28,7 +28,7 @@ ChatRooms (Firestore collection, or Firebase node)
                 approved : true
                 read : true
                 from : "angel@UK" ---------- my student's emailID / userID
-                teacher : "me"  ------ the teacher's email
+                approved by : tuid
                 msg : "hiya"   ---------- msg sent from my student
                 timestamp : "2020-09-16T19:45:00"
             Message1_2 (document)

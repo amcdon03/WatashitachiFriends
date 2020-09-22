@@ -1,20 +1,21 @@
 Students
-- suid(email)
+- suid
 - displayName(name)
 - email
 - tuid/displayName(foreign key)
 
 Teachers
-- tuid(email)
+- tuid
 - displayName(name)
+- email
 
-Class
-- suid(email)
-- tuid(email)
+Chatrooms
+- muid
+- suid1_suid2   --- chatroom
+- content
+- timestamp
 
 
-ChatApp
-    Suid1_Suid2
 
 what happens to the data - how data stored <-- bus logic (how data structure works)
 (lives in model interaction with the database) APIs made from model
