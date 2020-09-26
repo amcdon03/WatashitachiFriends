@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { db } from "../services/firebase";
+//import { db } from "../services/firebase";
 import { SignIn } from "../utils/auth";
 
 export default function Login() {
+  //const history = useHistory();
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState({ nickname: "" });
-  const ref = db.ref("users/");
+  //const [username, setUsername] = useState({ profile: "" });
+  //const ref = db.ref("users/");
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,26 +19,28 @@ export default function Login() {
     setPassword(event.target.value);
   };
 
-  // Sets a profile name here?
+  /*   // Sets a profile name here?
   const handleNameChange = (event) => {
     event.persist();
     setUsername({ ...username, [event.target.name]: event.target.value });
-  };
+  }; */
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    ref
-      .orderByChild("username")
-      .equalTo(username.nickname)
+    /* ref
+      .orderByChild("profile")
+      .equalTo(username.username)
       .once("value", (snapshot) => {
         if (snapshot.exists()) {
-          localStorage.setItem("nickname", username.nickname);
+          localStorage.setItem("profile", username.username);
+          history.push("/chat");
         } else {
           const newUser = db.ref("users/").push();
           newUser.set(username);
-          localStorage.setItem("nickname", username.nickname);
+          localStorage.setItem("profile", username.username);
+          history.push("/chat");
         }
-      });
+      }); */
     setError("");
 
     try {
@@ -70,17 +73,17 @@ export default function Login() {
             type="password"
           />
         </div>
-        <br />
+        {/*         <br />
         <div>
           <input
             placeholder="Profile Name"
-            name="nickname"
+            name="profile"
             onChange={handleNameChange}
-            value={username.nickname}
+            value={username.username}
             type="text"
           />
         </div>
-        <br />
+        <br /> */}
         <div>
           {error ? <p className="error">{error}</p> : null}
           <button type="submit">Login</button>
