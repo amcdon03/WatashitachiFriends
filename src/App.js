@@ -12,6 +12,8 @@ import { PublicRoute, PrivateRoute } from "./utils/route";
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const STUDENT_ROLE = "student"; // need to complete this
+  const TEACHER_ROLE = "teacher"; // student/teacher set up
 
   useEffect(() => {
     // auth is coming from FB
@@ -51,11 +53,13 @@ export default function App() {
         />
         <PrivateRoute
           path="/chat"
+          authorizedRoles={[TEACHER_ROLE, STUDENT_ROLE]}
           authenticated={authenticated}
           component={Chat}
         />
         <PrivateRoute
           path="/dashboard"
+          authorizedRoles={[TEACHER_ROLE]}
           authenticated={authenticated}
           component={Dashboard}
         />
