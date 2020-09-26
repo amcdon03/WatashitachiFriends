@@ -2,7 +2,7 @@ Students
 - suid
 - displayName(name)
 - email
-- tuid/displayName(foreign key)
+- tuid(foreign key)
 
 Teachers
 - tuid
@@ -10,10 +10,11 @@ Teachers
 - email
 
 Chatrooms
-- muid
-- suid1_suid2   --- chatroom
+- cuid
+- suid1_suid2   --- is a chatroom
 - content
 - timestamp
+- approval (bool)
 
 
 
@@ -24,3 +25,5 @@ eg. connection to
  
 functional logic - check verification where does it go
 (controller calls a method/function to do functional logic on it)
+
+https://firebase.google.com/docs/rules/basics#data-defined_attributes_and_roles

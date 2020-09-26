@@ -10,7 +10,7 @@ export default function RoomList() {
   useEffect(() => {
     const fetchUsername = async () => {
       setUsername(localStorage.getItem("username"));
-      db.ref("messages/ +toDisplay/ +toDisplayID +uuid1_uuid2/").on(
+      db.ref("messages/toDisplay/).on(
         "value",
         (response) => {
           setRoom([]);
@@ -64,4 +64,3 @@ export default function RoomList() {
           //console.log("snap", snap.val);
         });
         setChats(messages); */
- */
