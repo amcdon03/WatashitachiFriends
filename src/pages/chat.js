@@ -11,11 +11,11 @@ export default function Chat() {
   const [chats, setChats] = useState([]);
   const [readError, setReadError] = useState(null);
   const [writeError, setWriteError] = useState(null);
-  //console.log("user:",user);
+  //console.log("user:", user);
   // useEffect fn loads the room data from the FB realtime db
   useEffect(() => {
     try {
-      db.ref("chatrooms").on("value", (snapshot) => {
+      db.ref("messages/toDisplay").on("value", (snapshot) => {
         let messagesForReceivingStudent = [];
         console.log("msg4st:", messagesForReceivingStudent);
         snapshot.forEach((snap) => {
@@ -34,11 +34,11 @@ export default function Chat() {
   function sendMessage(newCurrentMessage) {
     setWriteError(null);
     try {
-      db.ref("chatrooms").push({
-        username: user.username,
+      db.ref("messages/toDisplay").push({
+        //username: user,
         content: newCurrentMessage,
         timestamp: Date.now(),
-        //teacher: user.teacher.email, // how do i get this info? when cmmtd out, breaks
+        //teacher: user.teacher.uid, // how do i get this info? when uncommented, breaks
         uid: user.uid, // st email to use as user uid
       });
     } catch (error) {
