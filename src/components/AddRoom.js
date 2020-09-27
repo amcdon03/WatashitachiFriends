@@ -5,7 +5,7 @@ import { db } from "../services/firebase";
 export default function AddRoom() {
   const history = useHistory();
   const [room, setRoom] = useState({ roomname: "" });
-  const ref = db.ref("messages/ +toDisplay/ +chatroom1/");
+  const ref = db.ref("messages/toDisplay/");
 
   const save = (event) => {
     event.preventDefault();
@@ -16,11 +16,11 @@ export default function AddRoom() {
         if (snapshot.exists()) {
           return (
             <div>
-              <Alert color="primary">Room name already exist!</Alert>
+              <Alert>Name already exists</Alert>
             </div>
           );
         } else {
-          const newRoom = db().ref("messages/ +toDisplay/").push();
+          const newRoom = db().ref("messages/toDisplay/").push();
           newRoom.set(room);
           history.goBack();
         }
@@ -34,18 +34,17 @@ export default function AddRoom() {
 
     return (
       <div>
-          <h2>Please enter new Room</h2>
+          <h2>Please enter new room</h2>
           <Form onSubmit={save}>
             <Label>Room Name</Label>
             <Input
               type="text"
               name="roomname"
-              id="roomname"
-              placeholder="Enter Room Name"
+              placeholder="Room Name"
               value={room.roomname}
               onChange={onChange}
             />
-            <Button variant="primary" type="submit">
+            <Button type="submit">
               Add
             </Button>
           </Form>
