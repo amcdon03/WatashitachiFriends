@@ -51,7 +51,7 @@ export default function Chat() {
       {readError ? readError : ""}
       <Header user={user} />
       <h3>Yay! Let's Chat!</h3>
-      <MessageList messages={chats} currentUserId={user.email} />
+      <MessageList messages={chats} currentUserId={user.uid} />
       <MessageForm onSend={sendMessage} error={writeError} />
     </section>
   );
